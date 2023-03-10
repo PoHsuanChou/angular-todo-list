@@ -1,6 +1,7 @@
 .heading-section{
     padding: 100px;
-    background: linear-gradient(rgb(2,228,171),rgb(74,215,240));
+    padding-bottom: 150px;
+    background: linear-gradient(rgb(125, 52, 227),rgb(74,215,240));
     h1.title{
         font-weight: bold;
         color: white;
@@ -16,8 +17,75 @@
     padding: 25px;
     background: white;
     border-radius: 4px;
-    margin-top: -68px;
+
+    margin-top: -68px; // move up 
     border: 1px solid black;
 
     box-shadow: 0 4px 12px rgba(black, 0.08);
+}
+
+.todo-item{
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    font-size: 18px;
+    padding: 35px 15px;
+
+    border-bottom: 1px solid #f2f3f5;
+    &.completed{
+        color: #aaa;
+    }
+
+
+}
+.todo-item .check-box{
+    display: flex;
+
+    flex-shrink: 0;
+
+    border:2px solid #eee;
+    border-radius: 50%;
+
+    margin-right: 20px;
+
+    height: 28px;
+    width: 28px;
+
+    transition: background-color 0.2s;
+
+    i.material-icons{
+        font-size: 20px;
+        margin:auto;
+
+        color:white;
+        //hide by default
+        opacity: 0;
+
+        transition: opacity 0.3s;
+    }
+
+    &:hover{
+        i.material-icons{
+            opacity: 1;
+        }
+    }
+}
+
+
+.todo-item:hover .check-box{
+    background: #eee;
+    i.material-icons{
+        opacity: 0.3;
+    }
+}
+
+
+.todo-item.completed .check-box{
+    background: rgb(152, 133, 191);
+    border-color: rgb(152, 133, 191);
+
+    i.material-icons{
+        opacity: 1;
+    }
 }
