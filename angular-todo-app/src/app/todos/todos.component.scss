@@ -19,7 +19,6 @@
     border-radius: 4px;
 
     margin-top: -68px; // move up 
-    border: 1px solid black;
 
     box-shadow: 0 4px 12px rgba(black, 0.08);
 }
@@ -31,6 +30,8 @@
     cursor: pointer;
     font-size: 18px;
     padding: 35px 15px;
+
+    position: relative;
 
     border-bottom: 1px solid #f2f3f5;
     &.completed{
@@ -58,7 +59,7 @@
         font-size: 20px;
         margin:auto;
 
-        color:white;
+        color:rgb(57, 57, 229);
         //hide by default
         opacity: 0;
 
@@ -96,12 +97,29 @@
     right: 5px;
     display: flex;
 
+    //hide by default
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(2px);
+
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s ;
+    
+
+}
+
+.todo-item:hover .todo-controls-box{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.4s;
+    transform: translateY(0);
+
+    
 }
 
 .todo-controls-box .todo-control-button{
     display: flex;
     background: #f5f7f8;
-    // border-radius: 5px;
+    border-radius: 5px;
     padding: 7px 10px;
 
     i.material-icons{
