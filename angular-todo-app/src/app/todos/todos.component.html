@@ -6,11 +6,11 @@
 
 <div class="container">
     <div class="add-todo-box">
-        <form >
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
             <h2 class="title is-5">New Todo</h2>
             <div class="field is-grouped">
-                <p class="control is-expanded">
-                  <input class="input" type="text" placeholder="Type todo text here ...">
+                <p class="control is-expanded my-0" style="margin: 0">
+                  <input ngModel #todoTextField="ngModel" required minlength="2" minlength="2" name="text" class="input" type="text" placeholder="Type todo text here ...">
                 </p>
                 <p class="control">
                   <button class="button alt-gradient-button">
@@ -19,6 +19,7 @@
                   </button>
                 </p>
               </div>
+              
         </form>
     </div>
 </div>
@@ -29,42 +30,14 @@
   <div class="container">
 
     <div class="todo-lists">
-      <div class="todo-item completed">
-        <div class="check-box">
-          <i class="material-icons">check</i>
-        </div>
-        <div class="todo-text">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor quibusdam necessitatibus magnam, quaerat delectus, eaque rem cumque voluptatum minus omnis nobis? Libero tempore, nihil sed aliquam veritatis dolorum inventore praesentium?
-        </div>
-        <div class="todo-controls-box">
-          <div class="todo-control-button">
-            <i class="material-icons">edit</i>
-          </div>
-
-          <div class="todo-control-button is-danger">
-            <i class="material-icons">delete</i>
-          </div>
-        </div>
-      </div>
-
-      <div class="todo-item ">
-        <div class="check-box">
-          <i class="material-icons">check</i>
-        </div>
-        <div class="todo-text">
-          this only has one line
-        </div>
-
-        <div class="todo-controls-box">
-          <div class="todo-control-button">
-            <i class="material-icons">edit</i>
-          </div>
-
-          <div class="todo-control-button is-danger">
-            <i class="material-icons">delete</i>
-          </div>
-        </div>
-      </div>
+      
+      <app-todo-item 
+      *ngFor="let todo of todos; index as i" 
+      [todo]="todo" 
+      (todoClicked)="toggleCompleted(todo)"
+      (editClicked)="editTodo(todo,i)"
+      ></app-todo-item>
+  
 
     </div>
   </div>
